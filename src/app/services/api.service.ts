@@ -5,9 +5,10 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ApiService {
-  // private MOVIE_URL = "https://ce-authenticated-backend.herokuapp.com/";
-  // constructor(private httpClient: HttpClient) {}
-  // async get() {
-  //   return this.httpClient.get<IBeer[]>(this.MOVIE_URL).toPromise();
-  // }
+  private SERVER_URL = "https://ce-authenticated-backend.herokuapp.com/";
+  constructor(private httpClient: HttpClient) {}
+  async get() {
+    // return this.httpClient.get<IBeer[]>(this.SERVER_URL).toPromise();
+  }
+  async post() {}
 }
