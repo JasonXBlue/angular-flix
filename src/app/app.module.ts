@@ -1,17 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LogoComponent } from './logo/logo.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
-import { HeroComponent } from './hero/hero.component';
-import { TitleListComponent } from './title-list/title-list.component';
-import { HeroButtonComponent } from './hero-button/hero-button.component';
-import { ItemComponent } from './item/item.component';
-import { ListToggleComponent } from './list-toggle/list-toggle.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { LogoComponent } from "./logo/logo.component";
+import { SearchBoxComponent } from "./search-box/search-box.component";
+import { HeroComponent } from "./hero/hero.component";
+import { TitleListComponent } from "./title-list/title-list.component";
+import { HeroButtonComponent } from "./hero-button/hero-button.component";
+import { ItemComponent } from "./item/item.component";
+import { ListToggleComponent } from "./list-toggle/list-toggle.component";
+import { NavigationComponent } from "./navigation/navigation.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { ApiService } from "../app/services/api.service";
+import { MovieApiService } from "../app/services/movie-api.service";
+import { MovieService } from "../app/services/movie.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,13 +28,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ItemComponent,
     ListToggleComponent,
     NavigationComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [ApiService, MovieApiService, MovieService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
