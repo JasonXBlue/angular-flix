@@ -18,7 +18,7 @@ export class MovieService {
     return this.searchResults;
   }
 
-  getMovieList(): any[] {
+  getMyMovieList(): any[] {
     return this.myMovieList;
   }
 
@@ -35,7 +35,7 @@ export class MovieService {
   }
 
   async saveToList(movie: any) {
-    this.apiService.post(movie);
+    await this.apiService.post(movie);
     this.loadMovieList();
   }
 }

@@ -11,10 +11,9 @@ export class MovieApiService {
 
   get(query: string): any {
     return this.httpClient
-      .get("${this.MOVIE_URL}/?api_key=${this.API_KEY}&query=${query}")
+      .get<any>(
+        this.MOVIE_URL + "/?api_key=" + this.API_KEY + "&query=" + query
+      )
       .toPromise();
-
-    // return this.httpClient.get<IBeer[]>(this.MOVIE_URL).toPromise();
-    // This service has one more responsiblity than we have not seen before. It must append the api key to every request. &api_key=yourkey. Just hard code this in the get method.
   }
 }
