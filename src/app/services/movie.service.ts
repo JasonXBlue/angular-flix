@@ -6,25 +6,36 @@ import { ApiService } from "../services/api.service";
   providedIn: "root",
 })
 export class MovieService {
-  searchResults = [];
-  myMovieList = [];
+  searchResults: any[] = [];
+  myMovieList: any[] = [];
 
   constructor(
     private apiService: ApiService,
     private movieApiService: MovieApiService
   ) {}
 
-  getSearchResults() {
+  getSearchResults(): any[] {
     return this.searchResults;
   }
 
-  getMovieList() {
+  getMovieList(): any[] {
     return this.myMovieList;
   }
 
-  async searchForMovies(searchTerm) {}
+  async searchForMovies(searchTerm: string) {
+    const response = await this.movieApiService.get(searchTerm);
+    this.searchResults.length = 0;
+    this.searchResults.push(...response.results);
+  }
 
-  async loadMovieList() {}
+  async loadMovieList() {
+    const results = await this.apiService.get();
+    this.myMovieList.length = 0;
+    this.myMovieList.push(...results);
+  }
 
-  async saveToList(movie) {}
+  async saveToList(movie: any) {
+    this.apiService.post(movie);
+    this.loadMovieList();
+  }
 }
