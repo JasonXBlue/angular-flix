@@ -11,9 +11,7 @@ export class MovieApiService {
 
   get(query: string): any {
     return this.httpClient
-      .get<any>(
-        this.MOVIE_URL + "/?api_key=" + this.API_KEY + "&query=" + query
-      )
+      .get<any>(this.MOVIE_URL + "?api_key=" + this.API_KEY + "&query=" + query)
       .toPromise();
   }
 }
